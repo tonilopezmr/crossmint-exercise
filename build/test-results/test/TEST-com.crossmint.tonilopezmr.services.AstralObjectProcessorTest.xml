@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2024-03-14T20:07:09" hostname="Antonios-MacBook-Air.local" time="0.02">
+  <properties/>
+  <testcase name="Process a null SOLOON Astral Object when is not SOLOON()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a POLYANET Astral Object()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Throws NoValidColor when there is not Color on SOLoon()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a null POLYANET Astral Object when is not POLYANET()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a null COMETH Astral Object when is not COMETH()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a UP_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a LEFT_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a RIGHT_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a DOWN_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="build POLYANET Astral Object()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a BLUE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a PURPLE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a WHITE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a RED_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Throws NoValidDirection when there is not Direction on COMETH()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.001"/>
+  <testcase name="Process a null SPACE Astral Object when is not SPACE()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <testcase name="Process a SPACE Astral Object()" classname="com.crossmint.tonilopezmr.services.AstralObjectProcessorTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

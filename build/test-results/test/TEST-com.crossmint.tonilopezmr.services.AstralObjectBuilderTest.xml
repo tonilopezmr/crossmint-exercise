@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2024-03-14T20:07:09" hostname="Antonios-MacBook-Air.local" time="0.025">
+  <properties/>
+  <testcase name="Build UP_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.012"/>
+  <testcase name="Build LEFT_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="Build RIGHT_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.0"/>
+  <testcase name="Build DOWN_COMETH Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.0"/>
+  <testcase name="Build BLUE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="Build PURPLE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="Build WHITE_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.0"/>
+  <testcase name="Build RED_SOLOON Astral Object" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="build POLYANET Astral Object()" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="build a SPACE Astral Object()" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <testcase name="throws UnidentifiedAstralObject error when astral object is not recognized()" classname="com.crossmint.tonilopezmr.services.AstralObjectBuilderTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

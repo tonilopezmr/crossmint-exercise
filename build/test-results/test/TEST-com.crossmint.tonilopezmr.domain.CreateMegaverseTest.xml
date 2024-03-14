@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.crossmint.tonilopezmr.domain.CreateMegaverseTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-03-14T20:07:07" hostname="Antonios-MacBook-Air.local" time="0.088">
+  <properties/>
+  <testcase name="Create a megaverse with one POLYanets()" classname="com.crossmint.tonilopezmr.domain.CreateMegaverseTest" time="0.064"/>
+  <testcase name="Create a megaverse with SOLoons because has adjacent POLYanet()" classname="com.crossmint.tonilopezmr.domain.CreateMegaverseTest" time="0.004"/>
+  <testcase name="Create a megaverse with one SOLoons should throw NoPOLYanetAdjacentForSOLoonCreation()" classname="com.crossmint.tonilopezmr.domain.CreateMegaverseTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mar 14, 2024 9:07:07 PM com.crossmint.tonilopezmr.usecases.CreateMegaverse$invoke$1 invokeSuspend
+INFO: Creating megaverse...
+Mar 14, 2024 9:07:07 PM com.crossmint.tonilopezmr.usecases.CreateMegaverse$invoke$1 invokeSuspend
+INFO: Total Astral Objects Created: 1
+Mar 14, 2024 9:07:07 PM com.crossmint.tonilopezmr.usecases.CreateMegaverse$invoke$1 invokeSuspend
+INFO: Creating megaverse...
+Mar 14, 2024 9:07:07 PM com.crossmint.tonilopezmr.usecases.CreateMegaverse$invoke$1 invokeSuspend
+INFO: Total Astral Objects Created: 2
+]]></system-err>
+</testsuite>
