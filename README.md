@@ -2,35 +2,35 @@
 
 tonilopezmr.com Crossmint exercise
 
-I have created an empty Spring boot project thinking I'd create an API, but finally I have created a simple App.
+I have created an empty Spring boot project thinking I'd create an API, but finally, I have created a simple App.
 
 That's why to run the project you can use springBoot features.
 
 ## Code Entry Point
 
-[TonilopezmrApplication.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FTonilopezmrApplication.kt) 
+[TonilopezmrApplication.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FTonilopezmrApplication.kt)
 is the code entry point where everything starts.
 
 You can configure the `TONILOPEZMR_CANDIDATE_ID` with a different `CANDIDATE-ID`.
 
-The App Creates a Megaverse from a Goal map returned by the Megaverse API. 
+The App Creates a Megaverse from a Goal map returned by the Megaverse API.
 It sends one request per second to not receive a rate limit, It can be adjusted in [Coroutines.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FCoroutines.kt) changing how much requests (`batchSize`) you want to do in parallel per second (`delayInSeconds`).
 
-The App can be run in parallel if you increase the `batchSize`, but also It can be done sequentially changing the Coroutine Context.
+The App can be run in parallel if you increase the `batchSize`, but also It can be done sequentially by changing the Coroutine Context.
 
 ## Programming Style
 
-I have try to create a simple app meanwhile I showcase what's I think is important.
+I have tried to create a simple app meanwhile I showcase what I think is important.
 
-### Errors 
+### Errors
 
-I have decided to `throws` errors to stop the App, there are many ways to handle errors, but this way does the code easy to read for this test.
+I have decided to `throws` errors to stop the App, there are many ways to handle errors, but this way the code is easy to read for this test.
 
-In Kotlin/Java I prefer to use `Result` which is a `Either<A, Exception>` than throwing errors, because the methods gives more transparency than throwing errors.
+In Kotlin/Java I prefer to use `Result` which is a `Either<A, Exception>` than throwing errors because the methods give more transparency than throwing errors.
 
 ### Structure
 
-As It's a small App, I'm not sure how structured it, I didn't want to create so many folders / subfolders.
+As It's a small App, I'm not sure how structured it is, I didn't want to create so many folders / subfolders.
 
 `domain` package: Domain models of the App
 `usecases` package: App Actions like `Get Goal Map` and `Create Megaverso`
@@ -54,7 +54,7 @@ AstralObject is a `sealed class` to be able to know the inheritance in compile t
 
 `App Layer` -> `Bussines logic` -> `External Services`
 
-It's important to decouple **App layer** from **business logic layer** and **External Services layer**, that's why each layer 
+It's important to decouple **App layer** from **business logic layer** and **External Services layer**, that's why each layer
 uses different DTO's and Objects through mappers. Using `Megaverse` instead of `Array<Array<String>>` or `SOLoon` instead of `BLUE_SOLOON` or `SOLoonBody`.
 
 ### Extension
@@ -75,7 +75,7 @@ object AstralObjectBuilder {
 }
 ```
 
-If in the future there are new Astral Objects from the API, we would create a new `AstralObjectProcessor` and add it on the `possibleAstralObjects` list.
+If in the future there are new Astral Objects from the API, we would create a new `AstralObjectProcessor` and add it to the `possibleAstralObjects` list.
 
 ```kotlin
 private fun create(candidateId: String, megaverse: Megaverse, astralObject: AstralObject) = when (astralObject) {
@@ -121,7 +121,7 @@ Check code style:
 ./gradlew ktlintCheck
 ```
 
-Check and solve the code styles problems that can be solved automatically:
+Check and solve the code style problems that can be solved automatically:
 ```
 ./gradlew ktlintFormat
 ```
