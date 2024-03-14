@@ -48,7 +48,7 @@ class CreateMegaverseTest {
 
   @Test
   fun `Create a megaverse with one ComETH`() {
-    val newComETH = ComETH(Direction.down, 0, 1)
+    val newComETH = ComETH(Direction.DOWN, 0, 1)
     val megaverse = Megaverse(
       arrayOf(
         arrayOf(EmptySpace(0, 0), newComETH)
@@ -64,7 +64,7 @@ class CreateMegaverseTest {
 
   @Test
   fun `Create a megaverse with one SOLoons should throw NoPOLYanetAdjacentForSOLoonCreation`() {
-    val newSOLoon = SOLoon(Color.red, 0, 1)
+    val newSOLoon = SOLoon(Color.RED, 0, 1)
     val megaverse = Megaverse(
       arrayOf(
         arrayOf(EmptySpace(0, 0), newSOLoon)
@@ -82,7 +82,7 @@ class CreateMegaverseTest {
   @Test
   fun `Create a megaverse with SOLoons because has adjacent POLYanet`() {
     val newPOLYanet = POLYanet(0, 2)
-    val newSOLoon = SOLoon(Color.red, 0, 1)
+    val newSOLoon = SOLoon(Color.RED, 0, 1)
     val megaverse = Megaverse(
       arrayOf(
         arrayOf(EmptySpace(0, 0), newSOLoon, newPOLYanet)

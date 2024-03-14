@@ -13,7 +13,7 @@ enum class Direction {
 
   companion object {
     fun fromString(direction: String): Direction = try {
-      Direction.valueOf(direction.lowercase())
+      Direction.valueOf(direction.uppercase())
     } catch (e: IllegalArgumentException) {
       throw NoValidDirection(direction)
     }
@@ -27,7 +27,7 @@ enum class Color {
 
   companion object {
     fun fromString(color: String): Color = try {
-      Color.valueOf(color.lowercase())
+      Color.valueOf(color.uppercase())
     } catch (e: IllegalArgumentException) {
       throw NoValidColor(color)
     }

@@ -6,15 +6,18 @@ import com.crossmint.tonilopezmr.services.MegaverseAPIService
 import com.crossmint.tonilopezmr.usecases.CreateMegaverse
 import com.crossmint.tonilopezmr.usecases.GetMegaverseGoal
 
-class TonilopezmrMegaverseApp {
+class TonilopezmrMegaverseApp(
+  private val candidateId: String = TONILOPEZMR_CANDIDATE_ID,
+  megaverseAPIService: MegaverseAPIService = MegaverseAPIService(MEGAVERSE_API),
+  coroutines: Coroutines = Coroutines()
+) {
 
-  private val megaverseAPIService = MegaverseAPIService(MEGAVERSE_API)
-  private val createMegaverse = CreateMegaverse(megaverseAPIService)
+  private val createMegaverse = CreateMegaverse(megaverseAPIService, coroutines)
   private val getMegaverseGoal = GetMegaverseGoal(megaverseAPIService)
 
   fun execute() = try {
-    val goal = getMegaverseGoal(TONILOPEZMR_CANDIDATE_ID) ?: throw NoGoalFound
-    createMegaverse(TONILOPEZMR_CANDIDATE_ID, goal)
+    val goal = getMegaverseGoal(candidateId) ?: throw NoGoalFound
+    createMegaverse(candidateId, goal)
   } catch (ex: Exception) {
     logger.severe("ERROR: ${ex.javaClass}: ${ex.message}")
   }

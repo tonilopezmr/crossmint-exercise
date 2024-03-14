@@ -1,6 +1,6 @@
 package com.crossmint.tonilopezmr.domain
 
-import com.crossmint.tonilopezmr.domain.Color.purple
+import com.crossmint.tonilopezmr.domain.Color.PURPLE
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -12,7 +12,7 @@ class MegaverseTest {
       arrayOf(
         arrayOf(EmptySpace(0, 0), EmptySpace(0, 1), POLYanet(0, 2)),
         arrayOf(EmptySpace(1, 0), POLYanet(1, 1), EmptySpace(1, 2)),
-        arrayOf(SOLoon(purple, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2))
+        arrayOf(SOLoon(PURPLE, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2))
       )
     )
 
@@ -27,7 +27,7 @@ class MegaverseTest {
       arrayOf(
         arrayOf(EmptySpace(0, 0), EmptySpace(0, 1), POLYanet(0, 2)),
         arrayOf(EmptySpace(1, 0), POLYanet(1, 1), EmptySpace(1, 2)),
-        arrayOf(SOLoon(purple, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2))
+        arrayOf(SOLoon(PURPLE, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2))
       )
     )
 
@@ -42,7 +42,7 @@ class MegaverseTest {
       arrayOf(
         arrayOf(EmptySpace(0, 0), EmptySpace(0, 1), POLYanet(0, 2), EmptySpace(0, 3), EmptySpace(0, 4)),
         arrayOf(EmptySpace(1, 0), POLYanet(1, 1), EmptySpace(1, 2), EmptySpace(1, 3), EmptySpace(1, 4)),
-        arrayOf(SOLoon(purple, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2), EmptySpace(2, 3), EmptySpace(2, 4))
+        arrayOf(SOLoon(PURPLE, 2, 0), EmptySpace(2, 1), EmptySpace(2, 2), EmptySpace(2, 3), EmptySpace(2, 4))
       )
     )
 

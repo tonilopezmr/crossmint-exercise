@@ -1,8 +1,8 @@
 package com.crossmint.tonilopezmr.integration.services
 
-import com.crossmint.tonilopezmr.domain.Color.purple
+import com.crossmint.tonilopezmr.domain.Color.PURPLE
 import com.crossmint.tonilopezmr.domain.ComETH
-import com.crossmint.tonilopezmr.domain.Direction.up
+import com.crossmint.tonilopezmr.domain.Direction.UP
 import com.crossmint.tonilopezmr.domain.POLYanet
 import com.crossmint.tonilopezmr.domain.SOLoon
 import com.crossmint.tonilopezmr.services.MegaverseAPIService
@@ -16,8 +16,8 @@ class MegaverseAPIServiceIntegrationTest {
     private val BASE_URL = "https://challenge.crossmint.io/api/"
     private val CANDIDATE_ID = "7e2bdeaa-cb89-41ca-af94-ee60a74b592e"
     private val DEFAULT_POLYANET = POLYanet(0, 0)
-    private val DEFAULT_SOLOON = SOLoon(purple, 0, 0)
-    private val DEFAULT_COMETH = ComETH(up, 0, 0)
+    private val DEFAULT_SOLOON = SOLoon(PURPLE, 0, 0)
+    private val DEFAULT_COMETH = ComETH(UP, 0, 0)
   }
 
   private val megaverseAPIService: MegaverseAPIService = MegaverseAPIService(BASE_URL)

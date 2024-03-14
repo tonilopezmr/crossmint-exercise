@@ -92,7 +92,10 @@ Probably that will require we need to create a new `AstralObject` child, and our
 
 I have been creating the tests at the same time I develop, creating smaller cases to make sure what I'm coding is right.
 
-90% of the tests are unit tests except [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) which makes Network API calls. 
+90% of the tests are unit tests except:
+
+* [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) which makes Network API calls.
+* [TonilopezmrMegaverseAppTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FTonilopezmrMegaverseAppTest.kt) which makes an Integration App tests, except Making Network Calls.
 
 ⚠️ [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) doesn't work because, I created the tests when I was implementing the API, once the challenge is solved, the API returns 500 error.
 
