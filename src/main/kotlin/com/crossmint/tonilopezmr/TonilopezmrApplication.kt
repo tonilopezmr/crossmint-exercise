@@ -1,6 +1,7 @@
 package com.crossmint.tonilopezmr
 
 import com.crossmint.tonilopezmr.AppLogger.logger
+import com.crossmint.tonilopezmr.domain.NoGoalFound
 import com.crossmint.tonilopezmr.services.MegaverseAPIService
 import com.crossmint.tonilopezmr.usecases.CreateMegaverse
 import com.crossmint.tonilopezmr.usecases.GetMegaverseGoal
@@ -12,7 +13,7 @@ class TonilopezmrMegaverseApp {
   private val getMegaverseGoal = GetMegaverseGoal(megaverseAPIService)
 
   fun execute() = try {
-    val goal = getMegaverseGoal(TONILOPEZMR_CANDIDATE_ID)!!
+    val goal = getMegaverseGoal(TONILOPEZMR_CANDIDATE_ID) ?: throw NoGoalFound
     createMegaverse(TONILOPEZMR_CANDIDATE_ID, goal)
   } catch (ex: Exception) {
     logger.severe("ERROR: ${ex.javaClass}: ${ex.message}")

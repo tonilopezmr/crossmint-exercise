@@ -1,5 +1,8 @@
 package com.crossmint.tonilopezmr.domain
 
+/**
+ * 2D Megaverse map.
+ */
 data class Megaverse(val astralMap: Array<Array<AstralObject>>) {
 
   val astralObjects: List<AstralObject>

@@ -22,7 +22,7 @@ class CreateMegaverse(
   /**
    * Create Megaverse only creating the important Astral Objects.
    *
-   * They are created in batches of 1 per second by default.
+   * They are created in parallel (batches) of 1 per second by default.
    */
   operator fun invoke(candidateId: String, megaverse: Megaverse) = runBlocking {
     val requestCounter = AtomicInteger(0)

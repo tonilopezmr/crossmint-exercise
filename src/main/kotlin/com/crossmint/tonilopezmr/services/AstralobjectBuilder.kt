@@ -8,6 +8,12 @@ import com.crossmint.tonilopezmr.domain.EmptySpace
 import com.crossmint.tonilopezmr.domain.POLYanet
 import com.crossmint.tonilopezmr.domain.SOLoon
 
+/**
+ * Parses the individual Astral Objects from String to each specific Astral Object.
+ *
+ * If in the future we support more Astral Objects, we just need to create a new `AstralObjectProcessor`.
+ */
+
 interface AstralObjectProcessor {
   fun process(astralObject: String, row: Int, column: Int): AstralObject?
 }

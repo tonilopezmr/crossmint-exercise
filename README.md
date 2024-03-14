@@ -6,12 +6,108 @@ I have created an empty Spring boot project thinking I'd create an API, but fina
 
 That's why to run the project you can use springBoot features.
 
+### Code Entry Point
+
+[TonilopezmrApplication.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FTonilopezmrApplication.kt) 
+is the code entry point where everything starts.
+
+You can configure the `TONILOPEZMR_CANDIDATE_ID` with a different `CANDIDATE-ID`.
+
+The App Creates a Megaverse from a Goal map returned by the Megaverse API. 
+It sends one request per second to not receive a rate limit, It can be adjusted in [Coroutines.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FCoroutines.kt) changing how much requests (`batchSize`) you want to do in parallel per second (`delayInSeconds`).
+
+The App can be run in parallel if you increase the `batchSize`, but also It can be done sequentially changing the Coroutine Context.
+
+### Programming Style
+
+I have try to create a simple app meanwhile I showcase what's I think is important.
+
+#### Errors 
+
+I have decided to `throws` errors to stop the App, there are many ways to handle errors, but this way does the code easy to read for this test.
+
+In Kotlin/Java I prefer to use `Result` which is a `Either<A, Exception>` than throwing errors, because the methods gives more transparency than throwing errors.
+
+#### Structure
+
+As It's a small App, I'm not sure how structured it, I didn't want to create so many folders / subfolders.
+
+`domain` package: Domain models of the App
+`usecases` package: App Actions like `Get Goal Map` and `Create Megaverso`
+`services` package: External Services like `MegaverseAPI`
+
+
+#### Domain
+
+```kotlin
+sealed class AstralObject(val x: Int, val y: Int)
+data class EmptySpace(val row: Int, val column: Int) : AstralObject(row, column)
+data class POLYanet(val row: Int, val column: Int) : AstralObject(row, column)
+data class SOLoon(val color: Color, val row: Int, val column: Int) : AstralObject(row, column)
+data class ComETH(val direction: Direction, val row: Int, val column: Int) : AstralObject(row, column)
+```
+
+For each AstralObject I save the x,y position for easy Objects manipulations.
+AstralObject is a `sealed class` to be able to know the inheritance in compile time and don't miss any case or the build won't compile.
+
+#### Decoupling
+
+`App Layer` -> `Bussines logic` -> `External Services`
+
+It's important to decouple **App layer** from **business logic layer** and **External Services layer**, that's why each layer 
+uses different DTO's and Objects through mappers. Using `Megaverse` instead of `Array<Array<String>>` or `SOLoon` instead of `BLUE_SOLOON` or `SOLoonBody`.
+
+#### Extension
+
+```kotlin
+object AstralObjectBuilder {
+
+  private val possibleAstralObjects = listOf(
+    EmptySpaceProcessor(),
+    POLYanetProcessor(),
+    SOLoonProcessor(),
+    ComETHProcessor()
+  )
+
+  fun build(rawAstralObject: String, row: Int, column: Int): AstralObject =
+    possibleAstralObjects.firstNotNullOfOrNull { it.process(rawAstralObject, row, column) }
+      ?: throw UnidentifiedAstralObject(rawAstralObject)
+}
+```
+
+If in the future there are new Astral Objects from the API, we would create a new `AstralObjectProcessor` and add it on the `possibleAstralObjects` list.
+
+```kotlin
+private fun create(candidateId: String, megaverse: Megaverse, astralObject: AstralObject) = when (astralObject) {
+    is ComETH -> apiService.createCometh(candidateId, astralObject)
+    is POLYanet -> apiService.createPolyanet(candidateId, astralObject)
+    is SOLoon -> create(candidateId, megaverse, astralObject)
+    is EmptySpace -> false
+  }
+```
+
+Probably that will require we need to create a new `AstralObject` child, and our **Build** will fail because we don't contemplate the option in our `when`.
+
+### Tests
+
+I have been creating the tests at the same time I develop, creating smaller cases to make sure what I'm coding is right.
+
+90% of the tests are unit tests except [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) which makes Network API calls. 
+
+⚠️ [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) doesn't work because, I created the tests when I was implementing the API, once the challenge is solved, the API returns 500 error.
+
 ### How to run it
 
 Execute the TonilopezmrApplication:
 
  ```
 ./gradlew bootRun
+```
+
+### How to execute the tests
+
+```
+ ./gradlew test
 ```
 
 ### Code linter
@@ -25,84 +121,4 @@ Check code style:
 Check and solve the code styles problems that can be solved automatically:
 ```
 ./gradlew ktlintFormat
-```
-
-### Requests authentication
-
-To be able to perform requests in the backend is mandatory to send in the header of the request:
-
-```
-Authorization: Bearer $token
-```
-
-where `$token` is the JWT token provided by the Strapi authentication endpoints.
-
-#### Request authentication for testing endpoints
-
-For the endpoints like `/prices` you need to use an user and password. This user and password are set in with the
-application properties `test-endpoints.user` and `test-endpoints.password`
-
-
-## Amazon Web Services
-
-### Upload docker image to AWS ECR Repository
-
-To upload a docker image of the backend to AWS just execute the following commands:
-
-```
-docker build -t Cactus-backend --build-arg PROFILE=dev .
-aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 025093359923.dkr.ecr.eu-west-1.amazonaws.com
-docker tag Cactus-backend:latest 025093359923.dkr.ecr.eu-west-1.amazonaws.com/Cactus-backend:latest
-docker push 025093359923.dkr.ecr.eu-west-1.amazonaws.com/Cactus-backend:latest
-```
-
-### Deploy the image on Fargate
-
-- AWS_ACCESS_KEY_ID
-- AWS_DEFAULT_REGION
-- AWS_SECRET_ACCESS_KEY
-
-- DATABASE_CLIENT
-- DATABASE_HOST
-- DATABASE_USERNAME
-- DATABASE_PASSWORD
-
-- SECRET_KEY          (JWT)
-- REPOSITORY_URL      (ECR endpoint)
-- ENV_ECS_ARN_ROLE    (TASK ECS ARN ROLE)
-- PROFILE             (springboot profile)
-- SCHEDULERS_ACTIVE   (Activate internal workers)
-- BLENDER_URL         (Blender full URL)
-- KAFKA_BOOTSTRAP_SERVERS (Kafka endpoints and ports, comma separated)
-- KAFKA_GROUP_ID      (Group ID)
-- BLENDER_BUCKET      (Save blender results)
-
-#### Deploying the backend for the first time
-
-If you are deploying the backed for the first time, after pushing the image in the ECR Repository just follow
-the next article from the section "_Deploying a Spring Boot Application on AWS Fargate_":
-
-https://epsagon.com/development/deploying-java-spring-boot-on-aws-fargate/
-
-#### Update the current deploy with a new image of the backend
-
-If you have already created a cluster and just want only to update the docker image follow the next steps:
-
-- Push the new image to the ECR Repository.
-- Navigate to the Amazon ECS -> Task Definitions page.
-- Select your task and click in create new revision, and click on create.
-- Click in the Actions button and Update Service.
-- Click on Skip to Review and Update Service.
-- Wait until the task is updated, you can see the progress at the cluster page.
-- If everything is working fine, you need to remove the previous task revision, go to Task Definitions
-- Select the previous task revision and click on Actions -> Deregister
-
-### CORS
-
-You can configure CORS origins with the env variable `allowed.cors.origin` where you need to define all endpoints separated with commas.
-
-Example:
-
-```shell script
-allowed.cors.origin=http://localhost:3000,https://backend.dev.Cactus.app
 ```

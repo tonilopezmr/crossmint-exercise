@@ -1,8 +1,15 @@
-package com.crossmint.tonilopezmr.domain
+package com.crossmint.tonilopezmr.usecases
 
 import com.crossmint.tonilopezmr.Coroutines
+import com.crossmint.tonilopezmr.domain.Color
+import com.crossmint.tonilopezmr.domain.ComETH
+import com.crossmint.tonilopezmr.domain.Direction
+import com.crossmint.tonilopezmr.domain.EmptySpace
+import com.crossmint.tonilopezmr.domain.Megaverse
+import com.crossmint.tonilopezmr.domain.NoPOLYanetAdjacentForSOLoonCreation
+import com.crossmint.tonilopezmr.domain.POLYanet
+import com.crossmint.tonilopezmr.domain.SOLoon
 import com.crossmint.tonilopezmr.services.MegaverseAPIService
-import com.crossmint.tonilopezmr.usecases.CreateMegaverse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -40,7 +47,7 @@ class CreateMegaverseTest {
   }
 
   @Test
-  suspend fun `Create a megaverse with one ComETH`() {
+  fun `Create a megaverse with one ComETH`() {
     val newComETH = ComETH(Direction.down, 0, 1)
     val megaverse = Megaverse(
       arrayOf(

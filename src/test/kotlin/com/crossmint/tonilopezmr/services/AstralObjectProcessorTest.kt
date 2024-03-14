@@ -8,7 +8,9 @@ import com.crossmint.tonilopezmr.domain.NoValidColor
 import com.crossmint.tonilopezmr.domain.NoValidDirection
 import com.crossmint.tonilopezmr.domain.POLYanet
 import com.crossmint.tonilopezmr.domain.SOLoon
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource

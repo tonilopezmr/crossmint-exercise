@@ -4,3 +4,5 @@ data class NoPOLYanetAdjacentForSOLoonCreation(val soLoon: SOLoon) : RuntimeExce
 
 data class NoValidColor(val color: String) : RuntimeException("$color is NOT a valid Color")
 data class NoValidDirection(val direction: String) : RuntimeException("$direction is NOT a valid Direction")
+
+object NoGoalFound : RuntimeException("No Goal Found to create a Megaverse")

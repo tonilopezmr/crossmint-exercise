@@ -1,15 +1,17 @@
 package com.crossmint.tonilopezmr.services
 
 import com.crossmint.tonilopezmr.domain.AstralObject
-import com.crossmint.tonilopezmr.domain.Color
 import com.crossmint.tonilopezmr.domain.ComETH
-import com.crossmint.tonilopezmr.domain.Direction
 import com.crossmint.tonilopezmr.domain.EmptySpace
 import com.crossmint.tonilopezmr.domain.Megaverse
 import com.crossmint.tonilopezmr.domain.POLYanet
 import com.crossmint.tonilopezmr.domain.SOLoon
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
+
+/**
+ * API DTO's and Mappers
+ */
 
 data class POLYanetBody(
   val candidateId: String,
@@ -27,28 +29,28 @@ data class SOLoonBody(
   val candidateId: String,
   val row: Int,
   val column: Int,
-  val color: Color
+  val color: String
 )
 
 fun SOLoon.toBody(candidateId: String): SOLoonBody = SOLoonBody(
   candidateId = candidateId,
   row = x,
   column = y,
-  color = color
+  color = color.toString()
 )
 
 data class ComETHBody(
   val candidateId: String,
   val row: Int,
   val column: Int,
-  val direction: Direction
+  val direction: String
 )
 
 fun ComETH.toBody(candidateId: String): ComETHBody = ComETHBody(
   candidateId = candidateId,
   row = x,
   column = y,
-  direction = direction
+  direction = direction.toString()
 )
 
 data class GoalResponse @JsonCreator constructor(

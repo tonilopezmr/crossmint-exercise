@@ -1,7 +1,7 @@
 package com.crossmint.tonilopezmr.domain
 
 import com.crossmint.tonilopezmr.domain.Color.purple
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class MegaverseTest {
