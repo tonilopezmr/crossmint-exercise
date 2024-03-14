@@ -6,7 +6,7 @@ I have created an empty Spring boot project thinking I'd create an API, but fina
 
 That's why to run the project you can use springBoot features.
 
-### Code Entry Point
+## Code Entry Point
 
 [TonilopezmrApplication.kt](src%2Fmain%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2FTonilopezmrApplication.kt) 
 is the code entry point where everything starts.
@@ -18,17 +18,17 @@ It sends one request per second to not receive a rate limit, It can be adjusted 
 
 The App can be run in parallel if you increase the `batchSize`, but also It can be done sequentially changing the Coroutine Context.
 
-### Programming Style
+## Programming Style
 
 I have try to create a simple app meanwhile I showcase what's I think is important.
 
-#### Errors 
+### Errors 
 
 I have decided to `throws` errors to stop the App, there are many ways to handle errors, but this way does the code easy to read for this test.
 
 In Kotlin/Java I prefer to use `Result` which is a `Either<A, Exception>` than throwing errors, because the methods gives more transparency than throwing errors.
 
-#### Structure
+### Structure
 
 As It's a small App, I'm not sure how structured it, I didn't want to create so many folders / subfolders.
 
@@ -37,7 +37,7 @@ As It's a small App, I'm not sure how structured it, I didn't want to create so 
 `services` package: External Services like `MegaverseAPI`
 
 
-#### Domain
+### Domain
 
 ```kotlin
 sealed class AstralObject(val x: Int, val y: Int)
@@ -50,14 +50,14 @@ data class ComETH(val direction: Direction, val row: Int, val column: Int) : Ast
 For each AstralObject I save the x,y position for easy Objects manipulations.
 AstralObject is a `sealed class` to be able to know the inheritance in compile time and don't miss any case or the build won't compile.
 
-#### Decoupling
+### Decoupling
 
 `App Layer` -> `Bussines logic` -> `External Services`
 
 It's important to decouple **App layer** from **business logic layer** and **External Services layer**, that's why each layer 
 uses different DTO's and Objects through mappers. Using `Megaverse` instead of `Array<Array<String>>` or `SOLoon` instead of `BLUE_SOLOON` or `SOLoonBody`.
 
-#### Extension
+### Extension
 
 ```kotlin
 object AstralObjectBuilder {
@@ -88,7 +88,7 @@ private fun create(candidateId: String, megaverse: Megaverse, astralObject: Astr
 
 Probably that will require we need to create a new `AstralObject` child, and our **Build** will fail because we don't contemplate the option in our `when`.
 
-### Tests
+## Tests
 
 I have been creating the tests at the same time I develop, creating smaller cases to make sure what I'm coding is right.
 
@@ -99,7 +99,7 @@ I have been creating the tests at the same time I develop, creating smaller case
 
 ⚠️ [MegaverseAPIServiceIntegrationTest.kt](src%2Ftest%2Fkotlin%2Fcom%2Fcrossmint%2Ftonilopezmr%2Fintegration%2Fservices%2FMegaverseAPIServiceIntegrationTest.kt) doesn't work because, I created the tests when I was implementing the API, once the challenge is solved, the API returns 500 error.
 
-### How to run it
+## How to run it
 
 Execute the TonilopezmrApplication:
 
@@ -107,13 +107,13 @@ Execute the TonilopezmrApplication:
 ./gradlew bootRun
 ```
 
-### How to execute the tests
+## How to execute the tests
 
 ```
  ./gradlew test
 ```
 
-### Code linter
+## Code linter
 
 Check code style:
 
