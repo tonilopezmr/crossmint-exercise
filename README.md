@@ -1,6 +1,6 @@
-# crossmint-exercise
+# megaverse-exercise
 
-tonilopezmr.com Crossmint exercise
+tonilopezmr.com Megaverse exercise
 
 I have created an empty Spring boot project thinking I'd create an API, but finally, I have created a simple App.
 
